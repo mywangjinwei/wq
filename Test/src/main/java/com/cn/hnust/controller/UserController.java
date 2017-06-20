@@ -15,7 +15,7 @@ import com.cn.hnust.service.IUserService;
 public class UserController {
 	@Resource
 	private IUserService userService;
-	
+	//查找用户
 	@RequestMapping("/showUser.action")
 	public String toIndex(int id,HttpServletRequest request,Model model){
 		//int userId = Integer.parseInt(request.getParameter("id"));
@@ -24,19 +24,21 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "showUser";
 	}
+	//删除用户
 	@RequestMapping("/showUser.actiond")
 	public String delete(int id,HttpServletRequest request,Model model){
 		userService.getdeleteUser(id);
 		System.out.println(id+"---------------------");
 		return "showUser";
 	}
+	//插入用户
 	@RequestMapping("/insert.action")
 	public String Insert(User user,HttpServletRequest request,Model model){
 	userService.getInsert(user);
 	System.out.println(user);
 		return "showUser";
 		
-	}
+	}//更新用户
 	@RequestMapping("/update.action")
 	public String Update (User user, Model model){
 		userService.getUpdate(user);
